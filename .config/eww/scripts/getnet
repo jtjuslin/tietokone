@@ -1,0 +1,12 @@
+#!/bin/fish
+set wifi_list $(nmcli -t -f IN-USE,SIGNAL device wifi list)
+
+for wifi in $(string split \n $wifi_list)
+    set props $(string split : $wifi)
+    if test $props[1] = "*"
+        echo $props[2]
+        return
+    end
+end
+
+echo 0

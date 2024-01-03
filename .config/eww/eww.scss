@@ -1,0 +1,30 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+}
+
+//Global Styles
+.bar {
+  background-color: #161616;
+  color: #dde1e6;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.metric, .active-window {
+  padding: 3px 12px;
+}
+
+.sidestuff {
+  margin-right: 24px;
+}
+
+.metric scale trough highlight {
+  background-color: #ffffff;
+}
+
+.metric scale trough {
+  background-color: #262626;
+  min-height: 6px;
+  min-width: 54px;
+  margin-left: 12px;
+}
