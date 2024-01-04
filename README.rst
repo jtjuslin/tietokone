@@ -1,4 +1,4 @@
-tietokone*
+Tietokone*
 ==========
 
 Here are my dots and whatnots for backup purposes.
@@ -9,4 +9,4 @@ Now you know and it's on you.
 Also. There's probably some mad bitcoin wallet passwords I forgot to delete.
 Go ahead, look closely. I'm sure they're there.
 
-*computer
+*My Computer
