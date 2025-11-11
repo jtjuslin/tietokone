@@ -1,0 +1,76 @@
+(defpoll network :interval "1s" "scripts/getnet")
+(defpoll volume :interval "1s" "scripts/getvol")
+(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+
+(defwidget _battery [sta bat]
+  (box
+    :class "icon-box"
+    :space-evenly false
+    :spacing 0
+    (label
+      :text {
+        bat < 6 ? "󰂎" :
+        bat < 16 ? "󰁺" :
+        bat < 26 ? "󰁻" :
+        bat < 36 ? "󰁼" :
+        bat < 46 ? "󰁽" :
+        bat < 56 ? "󰁾" :
+        bat < 66 ? "󰁿" :
+        bat < 76 ? "󰂀" :
+        bat < 86 ? "󰂁" :
+        bat < 96 ? "󰂂" : "󰁹"})))
+
+(defwidget _network [sig]
+  (box
+    :class "icon-box"
+    :space-evenly false
+    :spacing 0
+    (label
+      :text {
+        sig < 26 ? "󰣴" :
+        sig < 51 ? "󰣶" :
+        sig < 76 ? "󰣸" : "󰣺"})))
+
+(defwidget _volume [vol]
+  (box
+    :class "icon-box"
+    :space-evenly false
+    :spacing 0
+    (label
+      :text {
+        vol == 0 ? "" :
+        vol < 33 ? "󰕿" :
+        vol < 66 ? "󰖀" : "󰕾"})))
+
+(defwidget _datetime [datetime]
+  (box
+    :class "datetime-box"
+    :space-evenly false
+    :spacing 0
+    (label
+      :text datetime)))
+
+(defwindow bar
+  :monitor 0
+  :stacing "fg"
+  :geometry (
+    geometry
+      :x "0%"
+      :y "0%"
+      :width "0px"
+      :height "48px"
+      :anchor "top right")
+  (box
+    :class "katti-bar"
+    :orientation "h"
+    :halign "end"
+    :space-evenly false
+    (_volume
+      :vol {volume})
+    (_network
+      :sig {network})
+    (_battery
+      :sta {EWW_BATTERY["BAT1"].status}
+      :bat {EWW_BATTERY["BAT1"].capacity})
+    (_datetime
+      :datetime {time})))

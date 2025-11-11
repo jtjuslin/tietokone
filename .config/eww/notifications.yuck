@@ -1,0 +1,41 @@
+(defwindow notifications []
+  :monitor 0
+  :stacking "overlay"
+  :geometry (
+    geometry
+      :x "0%"
+      :y "0%"
+      :width "0px"
+      :height "0px"
+      :anchor "top left")
+  (box
+    :class 'katti-notifications'
+    :orientation 'horizontal'
+    :space-evenly false
+    (for not in nots
+      (notification
+        :id {not.id}
+        :title {not.summary}
+        :message {not.message}))))
+
+(defvar nots
+  '[]')
+
+; (defvar nots
+;   '[{"id": "not-1", "summary": "tasd qwe sd asd itle", "message": "asd qweasd asdeka", "app_icon": "icon"},
+;     {"id": "not-2", "summary": "title", "message": "toka a qweasdas dqwd as asdasdqw eq qw", "app_icon": "icon"}]')
+
+(defwidget notification [id title message]
+  (box
+    :orientation "vertical"
+    :class "notification"
+    :space-evenly false
+    (expander
+      :class "title"
+      :name title
+      (box
+        :class "message"
+        :valign "start"
+        (label
+          :halign "start"
+          :text message)))))

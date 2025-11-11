@@ -10,3 +10,5 @@ Also. There's probably some mad bitcoin wallet passwords I forgot to delete.
 Go ahead, look closely. I'm sure they're there.
 
 *My Computer
+
+Note to self: when you next time forget how this works google dotfiles bare git repo.
